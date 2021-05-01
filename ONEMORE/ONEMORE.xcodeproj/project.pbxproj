@@ -15,6 +15,10 @@
 		DAA60528263BE7CA009D1101 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA60526263BE7CA009D1101 /* LaunchScreen.storyboard */; };
 		DAA60531263C1A19009D1101 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60530263C1A19009D1101 /* Model.swift */; };
 		DAA60535263C2FAF009D1101 /* MemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60534263C2FAF009D1101 /* MemoTableViewController.swift */; };
+		DAA60537263CEAFE009D1101 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60536263CEAFE009D1101 /* ComposeViewController.swift */; };
+		DAA60539263CF445009D1101 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60538263CF445009D1101 /* UIViewController+Alert.swift */; };
+		DAA6053B263CFDC0009D1101 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6053A263CFDC0009D1101 /* DetailViewController.swift */; };
+		DAA6053E263D0937009D1101 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6053D263D0937009D1101 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		DAA60529263BE7CA009D1101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAA60530263C1A19009D1101 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DAA60534263C2FAF009D1101 /* MemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewController.swift; sourceTree = "<group>"; };
+		DAA60536263CEAFE009D1101 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		DAA60538263CF445009D1101 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		DAA6053A263CFDC0009D1101 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DAA6053D263D0937009D1101 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 		DAA60517263BE7C8009D1101 /* ONEMORE */ = {
 			isa = PBXGroup;
 			children = (
+				DAA6053C263D0923009D1101 /* Data */,
 				DAA6052F263C19FC009D1101 /* Model */,
 				DAA60518263BE7C8009D1101 /* AppDelegate.swift */,
 				DAA6051A263BE7C8009D1101 /* SceneDelegate.swift */,
@@ -69,6 +78,9 @@
 				DAA60529263BE7CA009D1101 /* Info.plist */,
 				DAA60521263BE7C8009D1101 /* ONEMORE.xcdatamodeld */,
 				DAA60534263C2FAF009D1101 /* MemoTableViewController.swift */,
+				DAA60536263CEAFE009D1101 /* ComposeViewController.swift */,
+				DAA60538263CF445009D1101 /* UIViewController+Alert.swift */,
+				DAA6053A263CFDC0009D1101 /* DetailViewController.swift */,
 			);
 			path = ONEMORE;
 			sourceTree = "<group>";
@@ -79,6 +91,14 @@
 				DAA60530263C1A19009D1101 /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DAA6053C263D0923009D1101 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DAA6053D263D0937009D1101 /* DataManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +174,12 @@
 				DAA60535263C2FAF009D1101 /* MemoTableViewController.swift in Sources */,
 				DAA60523263BE7C8009D1101 /* ONEMORE.xcdatamodeld in Sources */,
 				DAA60519263BE7C8009D1101 /* AppDelegate.swift in Sources */,
+				DAA60537263CEAFE009D1101 /* ComposeViewController.swift in Sources */,
 				DAA6051B263BE7C8009D1101 /* SceneDelegate.swift in Sources */,
 				DAA60531263C1A19009D1101 /* Model.swift in Sources */,
+				DAA60539263CF445009D1101 /* UIViewController+Alert.swift in Sources */,
+				DAA6053E263D0937009D1101 /* DataManager.swift in Sources */,
+				DAA6053B263CFDC0009D1101 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

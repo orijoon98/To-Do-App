@@ -7,16 +7,16 @@
 
 import Foundation
 
-class Memo {
-    var content: String
-    var insertDate: Date
-    
-    init(content: String){
-        self.content = content
-        insertDate = Date()
-    }
-    
-    static var dummyMemoList = [
-        Memo(content: "여기에 메모를 추가하세요.")
-    ]
-}
+//class Memo {
+//    var content: String
+//    var insertDate: Date
+//
+//    init(content: String){
+//        self.content = content
+//        insertDate = Date()
+//    }
+//
+//    static var dummyMemoList = [
+//        Memo(content: "여기에 메모를 추가하세요.")
+//    ]
+//}
