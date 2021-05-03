@@ -1,0 +1,6 @@
+framework module Pods_ONEMORE {
+  umbrella header "Pods-ONEMORE-umbrella.h"
+
+  export *
+  module * { export * }
+}

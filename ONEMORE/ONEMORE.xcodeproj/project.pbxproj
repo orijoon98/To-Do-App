@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA875A5F2640019E003D9A5F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA875A5E2640019E003D9A5F /* CalendarViewController.swift */; };
+		DA875A6226402E8B003D9A5F /* Pods_ONEMORE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BCCD766B3F648CFADAD2CB /* Pods_ONEMORE.framework */; };
 		DAA60519263BE7C8009D1101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60518263BE7C8009D1101 /* AppDelegate.swift */; };
 		DAA6051B263BE7C8009D1101 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6051A263BE7C8009D1101 /* SceneDelegate.swift */; };
 		DAA60520263BE7C8009D1101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA6051E263BE7C8009D1101 /* Main.storyboard */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40BCCD766B3F648CFADAD2CB /* Pods_ONEMORE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ONEMORE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CCA3918ACC8ADEEDBB891BA /* Pods-ONEMORE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ONEMORE.debug.xcconfig"; path = "Target Support Files/Pods-ONEMORE/Pods-ONEMORE.debug.xcconfig"; sourceTree = "<group>"; };
+		DA875A5E2640019E003D9A5F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		DAA60515263BE7C8009D1101 /* ONEMORE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ONEMORE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA60518263BE7C8009D1101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAA6051A263BE7C8009D1101 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +41,7 @@
 		DAA60538263CF445009D1101 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		DAA6053A263CFDC0009D1101 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DAA6053D263D0937009D1101 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EB86BEADCF161296C32398CB /* Pods-ONEMORE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ONEMORE.release.xcconfig"; path = "Target Support Files/Pods-ONEMORE/Pods-ONEMORE.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA875A6226402E8B003D9A5F /* Pods_ONEMORE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C477561D9B44B54A2688C76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40BCCD766B3F648CFADAD2CB /* Pods_ONEMORE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEE2269E2FAAFF6D8AEEE407 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CCA3918ACC8ADEEDBB891BA /* Pods-ONEMORE.debug.xcconfig */,
+				EB86BEADCF161296C32398CB /* Pods-ONEMORE.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DAA6050C263BE7C8009D1101 = {
 			isa = PBXGroup;
 			children = (
 				DAA60517263BE7C8009D1101 /* ONEMORE */,
 				DAA60516263BE7C8009D1101 /* Products */,
+				CEE2269E2FAAFF6D8AEEE407 /* Pods */,
+				2C477561D9B44B54A2688C76 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +107,7 @@
 				DAA60536263CEAFE009D1101 /* ComposeViewController.swift */,
 				DAA60538263CF445009D1101 /* UIViewController+Alert.swift */,
 				DAA6053A263CFDC0009D1101 /* DetailViewController.swift */,
+				DA875A5E2640019E003D9A5F /* CalendarViewController.swift */,
 			);
 			path = ONEMORE;
 			sourceTree = "<group>";
@@ -108,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAA6052C263BE7CA009D1101 /* Build configuration list for PBXNativeTarget "ONEMORE" */;
 			buildPhases = (
+				1B0F355B7E668D0AF6B7CD1D /* [CP] Check Pods Manifest.lock */,
 				DAA60511263BE7C8009D1101 /* Sources */,
 				DAA60512263BE7C8009D1101 /* Frameworks */,
 				DAA60513263BE7C8009D1101 /* Resources */,
+				6602DD986579C08BE05B3983 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,11 +195,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B0F355B7E668D0AF6B7CD1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ONEMORE-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6602DD986579C08BE05B3983 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ONEMORE/Pods-ONEMORE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ONEMORE/Pods-ONEMORE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ONEMORE/Pods-ONEMORE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DAA60511263BE7C8009D1101 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA875A5F2640019E003D9A5F /* CalendarViewController.swift in Sources */,
 				DAA60535263C2FAF009D1101 /* MemoTableViewController.swift in Sources */,
 				DAA60523263BE7C8009D1101 /* ONEMORE.xcdatamodeld in Sources */,
 				DAA60519263BE7C8009D1101 /* AppDelegate.swift in Sources */,
@@ -256,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -311,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -323,13 +395,14 @@
 		};
 		DAA6052D263BE7CA009D1101 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CCA3918ACC8ADEEDBB891BA /* Pods-ONEMORE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TH3ZPR9PUK;
 				INFOPLIST_FILE = ONEMORE/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -343,13 +416,14 @@
 		};
 		DAA6052E263BE7CA009D1101 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB86BEADCF161296C32398CB /* Pods-ONEMORE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TH3ZPR9PUK;
 				INFOPLIST_FILE = ONEMORE/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
