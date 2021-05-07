@@ -17,34 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pok-cv-Tlc">
-                                <rect key="frame" x="100" y="197" width="164" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eYc-2g-ReQ">
+                                <rect key="frame" x="135.5" y="253" width="143.5" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="오늘도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNv-A8-mkM">
-                                        <rect key="frame" x="20" y="20" width="77" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-Nx-PwN">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="하나 더" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16H-hu-knf">
-                                        <rect key="frame" x="96" y="20" width="71" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaJ-3f-1Md">
+                                        <rect key="frame" x="66" y="0.0" width="6" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하나 더" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4u-mt-yvZ">
+                                        <rect key="frame" x="73" y="0.0" width="70.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pok-cv-Tlc" secondAttribute="trailing" constant="150" id="5D8-3c-wPr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pok-cv-Tlc" secondAttribute="bottom" constant="595" id="6eD-Fw-uho"/>
-                            <constraint firstItem="pok-cv-Tlc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="153" id="V5R-PY-8a2"/>
-                            <constraint firstItem="pok-cv-Tlc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="s4V-Tv-JPN"/>
+                            <constraint firstItem="eYc-2g-ReQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QXz-4S-tQQ"/>
+                            <constraint firstItem="eYc-2g-ReQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-180" id="udY-9l-DQm"/>
                         </constraints>
                     </view>
                 </viewController>
