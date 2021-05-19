@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     var memo: Memo?
     
     let formatter: DateFormatter = {
-       let f = DateFormatter()
+        let f = DateFormatter()
         f.dateStyle = .long
         f.locale = Locale(identifier: "Ko_kr")
         return f
@@ -86,7 +86,11 @@ extension DetailViewController: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath)
             
-            cell.textLabel?.text = formatter.string(for: memo?.insertDate)
+            if formatter.string(for: memo?.startDate) == formatter.string(for: memo?.finishDate) {
+                cell.textLabel?.text = formatter.string(for: memo?.startDate) ?? ""
+            } else {
+                cell.textLabel?.text = "\(formatter.string(for: memo?.startDate) ?? "") - \(formatter.string(for: memo?.finishDate) ?? "")"
+            }
             
             return cell
         default:

@@ -24,7 +24,7 @@ class DataManager {
     func fetchMemo() {
         let request: NSFetchRequest<Memo> = Memo.fetchRequest()
         
-        let sortByDateDesc = NSSortDescriptor(key: "insertDate", ascending: false)
+        let sortByDateDesc = NSSortDescriptor(key: "startDate", ascending: false)
         request.sortDescriptors = [sortByDateDesc]
         
         do {
@@ -37,7 +37,8 @@ class DataManager {
     func addNewMemo(_ memo: String?) {
         let newMemo = Memo(context: mainContext)
         newMemo.content = memo
-        newMemo.insertDate = Date()
+        newMemo.startDate = ComposeViewController.startingDate
+        newMemo.finishDate = ComposeViewController.finishingDate
         
         memoList.insert(newMemo, at: 0)
         

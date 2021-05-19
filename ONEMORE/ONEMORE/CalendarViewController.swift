@@ -14,7 +14,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     
     let formatter: DateFormatter = {
-       let f = DateFormatter()
+        let f = DateFormatter()
         f.dateStyle = .long
         f.locale = Locale(identifier: "Ko_kr")
         return f
@@ -58,7 +58,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
 
         let target = DataManager.shared.memoList[indexPath.row]
         cell.textLabel?.text = target.content
-        cell.detailTextLabel?.text = formatter.string(for: target.insertDate)
+        if formatter.string(for: target.startDate) == formatter.string(for: target.finishDate) {
+            cell.detailTextLabel?.text = formatter.string(for: target.startDate)
+        } else {
+            cell.detailTextLabel?.text = "\(formatter.string(for: target.startDate) ?? "") - \(formatter.string(for: target.finishDate) ?? "")"
+        }
         
         return cell
     }

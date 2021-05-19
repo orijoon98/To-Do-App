@@ -9,8 +9,45 @@ import UIKit
 
 class ComposeViewController: UIViewController {
     
+    let formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.locale = Locale(identifier: "Ko_kr")
+        return f
+    }()
+    
     var editTarget: Memo?
     var originalMemoContent: String?
+    
+    static var startingDate: Date?
+    static var finishingDate: Date?
+    
+    static func compareDate(a: Date, b: Date) -> Int {
+        switch a.compare(b) {
+        case .orderedAscending:
+            return 1
+        case .orderedDescending:
+            return -1
+        default:
+            return 0
+        }
+    }
+    
+    @IBOutlet weak var startDateOutlet: UIDatePicker!
+
+    @IBOutlet weak var finishDateOutlet: UIDatePicker!
+    
+    @IBAction func startDate(_ sender: UIDatePicker) {
+        let startDatePickerView = sender // 상수 선언, sender로 날짜가 보내짐
+        ComposeViewController.startingDate = startDatePickerView.date
+        print(formatter.string(from: startDatePickerView.date))
+    }
+
+    @IBAction func finishDate(_ sender: UIDatePicker) {
+        let finishDatePickerView = sender
+        ComposeViewController.finishingDate = finishDatePickerView.date
+        print(formatter.string(from: finishDatePickerView.date))
+    }
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -25,19 +62,23 @@ class ComposeViewController: UIViewController {
             return
         }
         
+        guard let sta = ComposeViewController.startingDate, let fin = ComposeViewController.finishingDate, ComposeViewController.compareDate(a: sta, b: fin) >= 0 else {
+            alert(message: "날짜를 재설정하세요")
+            return
+        }
 //        let newMemo = Memo(content: memo)
 //        Memo.dummyMemoList.append(newMemo)
         
         if let target = editTarget {
             target.content = memo
+            target.startDate = ComposeViewController.startingDate
+            target.finishDate = ComposeViewController.finishingDate
             DataManager.shared.saveContext()
             NotificationCenter.default.post(name: ComposeViewController.memoDidChange, object: nil)
         } else {
             DataManager.shared.addNewMemo(memo)
             NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         }
-        
-        
         
         dismiss(animated: true, completion: nil)
     }
@@ -63,9 +104,17 @@ class ComposeViewController: UIViewController {
             navigationItem.title = "메모 편집"
             memoTextView.text = memo.content
             originalMemoContent = memo.content
-        } else {
+            ComposeViewController.startingDate = memo.startDate
+            ComposeViewController.finishingDate = memo.finishDate
+            startDateOutlet.setDate(memo.startDate!, animated: false)
+            finishDateOutlet.setDate(memo.finishDate!, animated: false)
+        } else { // 새 메모
             navigationItem.title = "새 메모"
             memoTextView.text = ""
+            ComposeViewController.startingDate = Date()
+            ComposeViewController.finishingDate = Date()
+            startDateOutlet.setDate(Date(), animated: false)
+            finishDateOutlet.setDate(Date(), animated: false)
         }
         
         memoTextView.delegate = self
