@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA82781A26809A4800A88FFB /* settingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82781926809A4800A88FFB /* settingTableViewController.swift */; };
 		DA875A5F2640019E003D9A5F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA875A5E2640019E003D9A5F /* CalendarViewController.swift */; };
 		DA875A6226402E8B003D9A5F /* Pods_ONEMORE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BCCD766B3F648CFADAD2CB /* Pods_ONEMORE.framework */; };
 		DAA60519263BE7C8009D1101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60518263BE7C8009D1101 /* AppDelegate.swift */; };
@@ -15,17 +16,21 @@
 		DAA60523263BE7C8009D1101 /* ONEMORE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAA60521263BE7C8009D1101 /* ONEMORE.xcdatamodeld */; };
 		DAA60525263BE7CA009D1101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA60524263BE7CA009D1101 /* Assets.xcassets */; };
 		DAA60528263BE7CA009D1101 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA60526263BE7CA009D1101 /* LaunchScreen.storyboard */; };
-		DAA60531263C1A19009D1101 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60530263C1A19009D1101 /* Model.swift */; };
 		DAA60535263C2FAF009D1101 /* MemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60534263C2FAF009D1101 /* MemoTableViewController.swift */; };
 		DAA60537263CEAFE009D1101 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60536263CEAFE009D1101 /* ComposeViewController.swift */; };
 		DAA60539263CF445009D1101 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA60538263CF445009D1101 /* UIViewController+Alert.swift */; };
 		DAA6053B263CFDC0009D1101 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6053A263CFDC0009D1101 /* DetailViewController.swift */; };
 		DAA6053E263D0937009D1101 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6053D263D0937009D1101 /* DataManager.swift */; };
+		DAAE3C8126807BC300029943 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE3C8026807BC300029943 /* NotificationTableViewController.swift */; };
+		DAAE3C8326807C2400029943 /* notiDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE3C8226807C2400029943 /* notiDataManager.swift */; };
+		DAAE3C8526807FC900029943 /* notiComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE3C8426807FC900029943 /* notiComposeViewController.swift */; };
+		DAAE3C872680883300029943 /* notiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE3C862680883300029943 /* notiDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		40BCCD766B3F648CFADAD2CB /* Pods_ONEMORE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ONEMORE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCA3918ACC8ADEEDBB891BA /* Pods-ONEMORE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ONEMORE.debug.xcconfig"; path = "Target Support Files/Pods-ONEMORE/Pods-ONEMORE.debug.xcconfig"; sourceTree = "<group>"; };
+		DA82781926809A4800A88FFB /* settingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingTableViewController.swift; sourceTree = "<group>"; };
 		DA875A5E2640019E003D9A5F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		DAA60515263BE7C8009D1101 /* ONEMORE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ONEMORE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA60518263BE7C8009D1101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,12 +40,15 @@
 		DAA60524263BE7CA009D1101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAA60527263BE7CA009D1101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAA60529263BE7CA009D1101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAA60530263C1A19009D1101 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DAA60534263C2FAF009D1101 /* MemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewController.swift; sourceTree = "<group>"; };
 		DAA60536263CEAFE009D1101 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		DAA60538263CF445009D1101 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		DAA6053A263CFDC0009D1101 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DAA6053D263D0937009D1101 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DAAE3C8026807BC300029943 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		DAAE3C8226807C2400029943 /* notiDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notiDataManager.swift; sourceTree = "<group>"; };
+		DAAE3C8426807FC900029943 /* notiComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notiComposeViewController.swift; sourceTree = "<group>"; };
+		DAAE3C862680883300029943 /* notiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notiDetailViewController.swift; sourceTree = "<group>"; };
 		EB86BEADCF161296C32398CB /* Pods-ONEMORE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ONEMORE.release.xcconfig"; path = "Target Support Files/Pods-ONEMORE/Pods-ONEMORE.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				DAA6053C263D0923009D1101 /* Data */,
-				DAA6052F263C19FC009D1101 /* Model */,
 				DAA60518263BE7C8009D1101 /* AppDelegate.swift */,
 				DAA6051A263BE7C8009D1101 /* SceneDelegate.swift */,
 				DAA6051E263BE7C8009D1101 /* Main.storyboard */,
@@ -108,22 +115,19 @@
 				DAA60538263CF445009D1101 /* UIViewController+Alert.swift */,
 				DAA6053A263CFDC0009D1101 /* DetailViewController.swift */,
 				DA875A5E2640019E003D9A5F /* CalendarViewController.swift */,
+				DAAE3C8026807BC300029943 /* NotificationTableViewController.swift */,
+				DAAE3C8426807FC900029943 /* notiComposeViewController.swift */,
+				DAAE3C862680883300029943 /* notiDetailViewController.swift */,
+				DA82781926809A4800A88FFB /* settingTableViewController.swift */,
 			);
 			path = ONEMORE;
-			sourceTree = "<group>";
-		};
-		DAA6052F263C19FC009D1101 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DAA60530263C1A19009D1101 /* Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		DAA6053C263D0923009D1101 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				DAA6053D263D0937009D1101 /* DataManager.swift */,
+				DAAE3C8226807C2400029943 /* notiDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -242,16 +246,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA82781A26809A4800A88FFB /* settingTableViewController.swift in Sources */,
 				DA875A5F2640019E003D9A5F /* CalendarViewController.swift in Sources */,
 				DAA60535263C2FAF009D1101 /* MemoTableViewController.swift in Sources */,
 				DAA60523263BE7C8009D1101 /* ONEMORE.xcdatamodeld in Sources */,
 				DAA60519263BE7C8009D1101 /* AppDelegate.swift in Sources */,
 				DAA60537263CEAFE009D1101 /* ComposeViewController.swift in Sources */,
 				DAA6051B263BE7C8009D1101 /* SceneDelegate.swift in Sources */,
-				DAA60531263C1A19009D1101 /* Model.swift in Sources */,
+				DAAE3C8126807BC300029943 /* NotificationTableViewController.swift in Sources */,
 				DAA60539263CF445009D1101 /* UIViewController+Alert.swift in Sources */,
 				DAA6053E263D0937009D1101 /* DataManager.swift in Sources */,
+				DAAE3C872680883300029943 /* notiDetailViewController.swift in Sources */,
+				DAAE3C8526807FC900029943 /* notiComposeViewController.swift in Sources */,
 				DAA6053B263CFDC0009D1101 /* DetailViewController.swift in Sources */,
+				DAAE3C8326807C2400029943 /* notiDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
 //
-//  ComposeViewController.swift
+//  notiComposeViewController.swift
 //  ONEMORE
 //
-//  Created by 공혁준 on 2021/05/01.
+//  Created by 공혁준 on 2021/06/21.
 //
 
 import UIKit
 
-class ComposeViewController: UIViewController {
-    
+class notiComposeViewController: UIViewController {
+
     let formatter: DateFormatter = {
         let f = DateFormatter()
         f.dateStyle = .long
@@ -16,44 +16,39 @@ class ComposeViewController: UIViewController {
         return f
     }()
     
-    var editTarget: Memo?
+    let timeFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "Ko_kr")
+        f.dateFormat = "a h:mm"
+        return f
+    }()
+    
+    var editTarget: Noti?
     var originalMemoContent: String?
     
-    static var startingDate: Date?
-    static var finishingDate: Date?
+    static var insertDate: Date?
+    static var insertTime: Date?
     
-    static func compareDate(a: Date, b: Date) -> Int {
-        switch a.compare(b) {
-        case .orderedAscending:
-            return 1
-        case .orderedDescending:
-            return -1
-        default:
-            return 0
-        }
-    }
     
-    @IBOutlet weak var startDateOutlet: UIDatePicker!
+    @IBOutlet weak var dateOutlet: UIDatePicker!
 
-    @IBOutlet weak var finishDateOutlet: UIDatePicker!
+    @IBOutlet weak var timeOutlet: UIDatePicker!
     
-    @IBAction func startDate(_ sender: UIDatePicker) {
-        let startDatePickerView = sender // 상수 선언, sender로 날짜가 보내짐
-        ComposeViewController.startingDate = startDatePickerView.date
-        print(formatter.string(from: startDatePickerView.date))
+    @IBAction func setDate(_ sender: UIDatePicker) {
+        let datePickerView = sender // 상수 선언, sender로 날짜가 보내짐
+        notiComposeViewController.insertDate = datePickerView.date
     }
 
-    @IBAction func finishDate(_ sender: UIDatePicker) {
-        let finishDatePickerView = sender
-        ComposeViewController.finishingDate = finishDatePickerView.date
-        print(formatter.string(from: finishDatePickerView.date))
+    @IBAction func setTime(_ sender: UIDatePicker) {
+        let datePickerView = sender
+        notiComposeViewController.insertTime = datePickerView.date
     }
+    
+    @IBOutlet weak var memoTextView: UITextView!
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var memoTextView: UITextView!
     
     @IBAction func save(_ sender: Any) {
         guard let memo = memoTextView.text,
@@ -62,20 +57,15 @@ class ComposeViewController: UIViewController {
             return
         }
         
-        guard let sta = ComposeViewController.startingDate, let fin = ComposeViewController.finishingDate, ComposeViewController.compareDate(a: sta, b: fin) >= 0 else {
-            alert(message: "날짜를 재설정하세요")
-            return
-        }
-        
         if let target = editTarget {
             target.content = memo
-            target.startDate = ComposeViewController.startingDate
-            target.finishDate = ComposeViewController.finishingDate
-            DataManager.shared.saveContext()
-            NotificationCenter.default.post(name: ComposeViewController.memoDidChange, object: nil)
+            target.insertDate = notiComposeViewController.insertDate
+            target.insertTime = notiComposeViewController.insertTime
+            notiDataManager.shared.saveContext()
+            NotificationCenter.default.post(name: notiComposeViewController.memoDidChange, object: nil)
         } else {
-            DataManager.shared.addNewMemo(memo)
-            NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+            notiDataManager.shared.addNewMemo(memo)
+            NotificationCenter.default.post(name: notiComposeViewController.newMemoDidInsert, object: nil)
         }
         
         dismiss(animated: true, completion: nil)
@@ -99,20 +89,20 @@ class ComposeViewController: UIViewController {
         super.viewDidLoad()
         
         if let memo = editTarget {
-            navigationItem.title = "메모 편집"
+            navigationItem.title = "알림 편집"
             memoTextView.text = memo.content
             originalMemoContent = memo.content
-            ComposeViewController.startingDate = memo.startDate
-            ComposeViewController.finishingDate = memo.finishDate
-            startDateOutlet.setDate(memo.startDate!, animated: false)
-            finishDateOutlet.setDate(memo.finishDate!, animated: false)
+            notiComposeViewController.insertDate = memo.insertDate
+            notiComposeViewController.insertTime = memo.insertTime
+            dateOutlet.setDate(memo.insertDate!, animated: false)
+            timeOutlet.setDate(memo.insertTime!, animated: false)
         } else { // 새 메모
-            navigationItem.title = "새 메모"
+            navigationItem.title = "새 알림"
             memoTextView.text = ""
-            ComposeViewController.startingDate = Date()
-            ComposeViewController.finishingDate = Date()
-            startDateOutlet.setDate(Date(), animated: false)
-            finishDateOutlet.setDate(Date(), animated: false)
+            notiComposeViewController.insertDate = Date()
+            notiComposeViewController.insertTime = Date()
+            dateOutlet.setDate(Date(), animated: false)
+            timeOutlet.setDate(Date(), animated: false)
         }
         
         memoTextView.delegate = self
@@ -174,7 +164,7 @@ class ComposeViewController: UIViewController {
 
 }
 
-extension ComposeViewController: UITextViewDelegate {
+extension notiComposeViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if let original = originalMemoContent, let edited = textView.text {
             if #available(iOS 13.0, *) {
@@ -187,7 +177,7 @@ extension ComposeViewController: UITextViewDelegate {
 }
 
 
-extension ComposeViewController: UIAdaptivePresentationControllerDelegate {
+extension notiComposeViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
         let alert = UIAlertController(title: "알림", message: "편집한 내용을 저장할까요?", preferredStyle: .alert)
         
@@ -203,7 +193,7 @@ extension ComposeViewController: UIAdaptivePresentationControllerDelegate {
     }
 }
 
-extension ComposeViewController {
+extension notiComposeViewController {
     static let newMemoDidInsert = Notification.Name(rawValue: "newMemoDidInsert")
     static let memoDidChange = Notification.Name(rawValue: "memoDidChange")
 }

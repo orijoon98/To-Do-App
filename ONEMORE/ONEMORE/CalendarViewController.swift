@@ -1,17 +1,12 @@
-//
-//  CalendarViewController.swift
-//  ONEMORE
-//
-//  Created by 공혁준 on 2021/05/03.
-//
 
 import UIKit
 import FSCalendar
 
 class CalendarViewController: UIViewController {
-    
-    
+
     @IBOutlet weak var calendar: FSCalendar!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     let formatter: DateFormatter = {
         let f = DateFormatter()
@@ -20,43 +15,113 @@ class CalendarViewController: UIViewController {
         return f
     }()
     
+    var events: [Date] = []
+    var selectedDate: Date?
+    
+    var memo: Memo?
+    var memoByDate = [Memo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.appearance.headerMinimumDissolvedAlpha = 0
         calendar.delegate = self
-        // Do any additional setup after loading the view.
+        calendar.dataSource = self
+        selectedDate = Date()
+        for memo in DataManager.shared.memoList {
+            if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
+                memoByDate.append(memo)
+            }
+        }
+        tableView.dataSource = self
+        tableView.reloadData()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setUpEvents() {
+        for memo in DataManager.shared.memoList {
+            var today: Date = formatter.date(from: formatter.string(from: memo.startDate!))!
+            var tomorrow: Date
+            while true {
+                let compareDate: Date = formatter.date(from: formatter.string(from: memo.finishDate!))!
+                if ComposeViewController.compareDate(a: today, b: compareDate) == -1 {
+                    break
+                }
+                events.append(today)
+                tomorrow = Date(timeInterval: 86400, since: today)
+                today = tomorrow
+            }
+        }
+        print(events.count)
     }
-    */
 }
 
-extension CalendarViewController: FSCalendarDelegate{
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource{
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedDate = Date()
+        memoByDate.removeAll()
+        events.removeAll()
+        if !DataManager.shared.memoList.isEmpty {
+            for memo in DataManager.shared.memoList {
+                if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
+                    memoByDate.append(memo)
+                }
+            }
+        }
+        tableView.reloadData()
+        setUpEvents()
+        calendar.reloadData()
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        print("called")
+        
+        if self.events.contains(date){
+            print("contains")
+            return 1
+        }
+        return 0
+    }
+    
+    
+    func ableDate(_ startDate: Date, _ targetDate: Date, _ finishDate: Date) -> Bool {
+        let x: Date = formatter.date(from: formatter.string(from: startDate))!
+        let y: Date = formatter.date(from: formatter.string(from: targetDate))!
+        let z: Date = formatter.date(from: formatter.string(from: finishDate))!
+        if ComposeViewController.compareDate(a: x, b: y) == -1 {
+            return false
+        }
+        if ComposeViewController.compareDate(a: y, b: z) == -1 {
+            return false
+        }
+        return true
+    }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(formatter.string(from: date))//선택된 날짜 넘겨서 table view reload하기
-        //tableView.reloadData()
+        memoByDate.removeAll()
+        
+        selectedDate = date
+        
+        for memo in DataManager.shared.memoList {
+            if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
+                memoByDate.append(memo)
+            }
+        }
+        
+        tableView.reloadData()
         
     }
-}
-
-extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataManager.shared.memoList.count
+        return memoByDate.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let target = DataManager.shared.memoList[indexPath.row]
+        let target = memoByDate[indexPath.row]
         cell.textLabel?.text = target.content
         if formatter.string(for: target.startDate) == formatter.string(for: target.finishDate) {
             cell.detailTextLabel?.text = formatter.string(for: target.startDate)
@@ -66,4 +131,5 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
+    
 }
