@@ -1,9 +1,4 @@
-//
-//  DetailViewController.swift
-//  ONEMORE
-//
-//  Created by 공혁준 on 2021/05/01.
-//
+
 
 import UIKit
 
@@ -63,17 +58,6 @@ class notiDetailViewController: UIViewController {
             
         })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -89,11 +73,15 @@ extension notiDetailViewController: UITableViewDataSource {
             
             cell.textLabel?.text = memo?.content
             
+            cell.textLabel?.font = UIFont .boldSystemFont(ofSize: 20)
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath)
             
             cell.textLabel?.text = "\(formatter.string(for: memo?.insertDate) ?? "") \(timeFormatter.string(for: memo?.insertTime) ?? "")"
+            
+            cell.textLabel?.font = UIFont .boldSystemFont(ofSize: 16)
             
             return cell
         default:

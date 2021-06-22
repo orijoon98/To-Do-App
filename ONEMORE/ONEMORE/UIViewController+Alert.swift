@@ -1,9 +1,4 @@
-//
-//  UIViewController+Alert.swift
-//  ONEMORE
-//
-//  Created by 공혁준 on 2021/05/01.
-//
+
 
 import UIKit
 

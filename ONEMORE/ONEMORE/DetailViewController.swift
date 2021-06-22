@@ -1,9 +1,4 @@
-//
-//  DetailViewController.swift
-//  ONEMORE
-//
-//  Created by 공혁준 on 2021/05/01.
-//
+
 
 import UIKit
 
@@ -57,17 +52,9 @@ class DetailViewController: UIViewController {
         })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
-    */
-
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -82,6 +69,8 @@ extension DetailViewController: UITableViewDataSource {
             
             cell.textLabel?.text = memo?.content
             
+            cell.textLabel?.font = UIFont .boldSystemFont(ofSize: 20)
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath)
@@ -91,6 +80,8 @@ extension DetailViewController: UITableViewDataSource {
             } else {
                 cell.textLabel?.text = "\(formatter.string(for: memo?.startDate) ?? "") - \(formatter.string(for: memo?.finishDate) ?? "")"
             }
+            
+            cell.textLabel?.font = UIFont .boldSystemFont(ofSize: 16)
             
             return cell
         default:

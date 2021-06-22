@@ -1,17 +1,17 @@
-//
-//  notiComposeViewController.swift
-//  ONEMORE
-//
-//  Created by 공혁준 on 2021/06/21.
-//
+
 
 import UIKit
 
 class notiComposeViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var leftButton: UIBarButtonItem!
+    
+    @IBOutlet weak var rightButton: UIBarButtonItem!
+    
     let formatter: DateFormatter = {
         let f = DateFormatter()
-        f.dateStyle = .long
+        f.dateFormat = "yyyy.MM.dd."
         f.locale = Locale(identifier: "Ko_kr")
         return f
     }()
@@ -105,6 +105,14 @@ class notiComposeViewController: UIViewController {
             timeOutlet.setDate(Date(), animated: false)
         }
         
+        let leftBarButton = leftButton
+        leftBarButton?.title = "취소"
+        navigationItem.leftBarButtonItem = leftBarButton
+        
+        let rightBarButton = rightButton
+        rightBarButton?.title = "저장"
+        navigationItem.rightBarButtonItem = rightBarButton
+        
         memoTextView.delegate = self
         
         willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
@@ -152,16 +160,6 @@ class notiComposeViewController: UIViewController {
         navigationController?.presentationController?.delegate = nil
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension notiComposeViewController: UITextViewDelegate {
@@ -170,7 +168,7 @@ extension notiComposeViewController: UITextViewDelegate {
             if #available(iOS 13.0, *) {
                 isModalInPresentation = original != edited
             } else {
-                // Fallback on earlier versions
+                
             }
         }
     }

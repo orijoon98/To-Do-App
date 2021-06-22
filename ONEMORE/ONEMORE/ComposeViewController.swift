@@ -1,17 +1,16 @@
-//
-//  ComposeViewController.swift
-//  ONEMORE
-//
-//  Created by 공혁준 on 2021/05/01.
-//
+
 
 import UIKit
 
 class ComposeViewController: UIViewController {
     
+    @IBOutlet weak var leftButton: UIBarButtonItem!
+    
+    @IBOutlet weak var rightButton: UIBarButtonItem!
+    
     let formatter: DateFormatter = {
         let f = DateFormatter()
-        f.dateStyle = .long
+        f.dateFormat = "yyyy.MM.dd."
         f.locale = Locale(identifier: "Ko_kr")
         return f
     }()
@@ -40,13 +39,11 @@ class ComposeViewController: UIViewController {
     @IBAction func startDate(_ sender: UIDatePicker) {
         let startDatePickerView = sender // 상수 선언, sender로 날짜가 보내짐
         ComposeViewController.startingDate = startDatePickerView.date
-        print(formatter.string(from: startDatePickerView.date))
     }
 
     @IBAction func finishDate(_ sender: UIDatePicker) {
         let finishDatePickerView = sender
         ComposeViewController.finishingDate = finishDatePickerView.date
-        print(formatter.string(from: finishDatePickerView.date))
     }
     
     @IBAction func close(_ sender: Any) {
@@ -115,6 +112,14 @@ class ComposeViewController: UIViewController {
             finishDateOutlet.setDate(Date(), animated: false)
         }
         
+        let leftBarButton = leftButton
+        leftBarButton?.title = "취소"
+        navigationItem.leftBarButtonItem = leftBarButton
+        
+        let rightBarButton = rightButton
+        rightBarButton?.title = "저장"
+        navigationItem.rightBarButtonItem = rightBarButton
+        
         memoTextView.delegate = self
         
         willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
@@ -162,16 +167,6 @@ class ComposeViewController: UIViewController {
         navigationController?.presentationController?.delegate = nil
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ComposeViewController: UITextViewDelegate {
@@ -180,7 +175,7 @@ extension ComposeViewController: UITextViewDelegate {
             if #available(iOS 13.0, *) {
                 isModalInPresentation = original != edited
             } else {
-                // Fallback on earlier versions
+                
             }
         }
     }

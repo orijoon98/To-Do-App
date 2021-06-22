@@ -10,7 +10,7 @@ class CalendarViewController: UIViewController {
     
     let formatter: DateFormatter = {
         let f = DateFormatter()
-        f.dateStyle = .long
+        f.dateFormat = "yyyy.MM.dd."
         f.locale = Locale(identifier: "Ko_kr")
         return f
     }()
@@ -39,20 +39,21 @@ class CalendarViewController: UIViewController {
     }
     
     func setUpEvents() {
-        for memo in DataManager.shared.memoList {
-            var today: Date = formatter.date(from: formatter.string(from: memo.startDate!))!
-            var tomorrow: Date
-            while true {
-                let compareDate: Date = formatter.date(from: formatter.string(from: memo.finishDate!))!
-                if ComposeViewController.compareDate(a: today, b: compareDate) == -1 {
-                    break
+        if(!MemoTableViewController.incomMemo.isEmpty){
+            for memo in MemoTableViewController.incomMemo {
+                var today: Date = formatter.date(from: formatter.string(from: memo.startDate!))!
+                var tomorrow: Date
+                while true {
+                    let compareDate: Date = formatter.date(from: formatter.string(from: memo.finishDate!))!
+                    if ComposeViewController.compareDate(a: today, b: compareDate) == -1 {
+                        break
+                    }
+                    events.append(today)
+                    tomorrow = Date(timeInterval: 86400, since: today)
+                    today = tomorrow
                 }
-                events.append(today)
-                tomorrow = Date(timeInterval: 86400, since: today)
-                today = tomorrow
             }
         }
-        print(events.count)
     }
 }
 
@@ -63,8 +64,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FS
         selectedDate = Date()
         memoByDate.removeAll()
         events.removeAll()
-        if !DataManager.shared.memoList.isEmpty {
-            for memo in DataManager.shared.memoList {
+        if !MemoTableViewController.incomMemo.isEmpty {
+            for memo in MemoTableViewController.incomMemo {
                 if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
                     memoByDate.append(memo)
                 }
@@ -76,10 +77,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FS
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        print("called")
         
         if self.events.contains(date){
-            print("contains")
             return 1
         }
         return 0
@@ -104,7 +103,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FS
         
         selectedDate = date
         
-        for memo in DataManager.shared.memoList {
+        for memo in MemoTableViewController.incomMemo {
             if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
                 memoByDate.append(memo)
             }
@@ -128,6 +127,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FS
         } else {
             cell.detailTextLabel?.text = "\(formatter.string(for: target.startDate) ?? "") - \(formatter.string(for: target.finishDate) ?? "")"
         }
+        
+        cell.textLabel?.font = UIFont .boldSystemFont(ofSize: 17)
+        cell.detailTextLabel?.font = UIFont .boldSystemFont(ofSize: 13)
         
         return cell
     }
