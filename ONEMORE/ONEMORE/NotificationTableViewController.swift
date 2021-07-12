@@ -8,12 +8,14 @@ class NotificationTableViewController: UITableViewController {
         let f = DateFormatter()
         f.dateFormat = "yyyy.MM.dd."
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         return f
     }()
     
     let timeFormatter: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         f.dateFormat = "a h:mm"
         return f
     }()

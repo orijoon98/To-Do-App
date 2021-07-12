@@ -11,6 +11,7 @@ class DetailViewController: UIViewController {
         let f = DateFormatter()
         f.dateStyle = .long
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         return f
     }()
     

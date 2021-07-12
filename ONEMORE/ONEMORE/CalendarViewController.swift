@@ -12,6 +12,7 @@ class CalendarViewController: UIViewController {
         let f = DateFormatter()
         f.dateFormat = "yyyy.MM.dd."
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         return f
     }()
     
@@ -28,7 +29,7 @@ class CalendarViewController: UIViewController {
         calendar.appearance.headerMinimumDissolvedAlpha = 0
         calendar.delegate = self
         calendar.dataSource = self
-        selectedDate = Date()
+        selectedDate = formatter.date(from: formatter.string(from: Date()))
         for memo in DataManager.shared.memoList {
             if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
                 memoByDate.append(memo)
@@ -36,6 +37,11 @@ class CalendarViewController: UIViewController {
         }
         tableView.dataSource = self
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.calendar.deselect(selectedDate!)
     }
     
     func setUpEvents() {
@@ -61,7 +67,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        selectedDate = Date()
+        selectedDate = formatter.date(from: formatter.string(from: Date()))
         memoByDate.removeAll()
         events.removeAll()
         if !MemoTableViewController.incomMemo.isEmpty {

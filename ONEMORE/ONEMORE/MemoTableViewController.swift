@@ -7,6 +7,7 @@ class MemoTableViewController: UITableViewController {
         let f = DateFormatter()
         f.dateFormat = "yyyy.MM.dd."
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         return f
     }()
     

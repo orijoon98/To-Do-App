@@ -360,16 +360,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="데이터 초기화" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xf6-yn-re8">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="93" height="21.333333333333329"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="93" id="HxS-kH-VvV"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="108" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xf6-yn-re8" secondAttribute="trailing" constant="224.33000000000001" id="0dd-Hv-AAy"/>
                                                 <constraint firstItem="xf6-yn-re8" firstAttribute="left" secondItem="Eta-oN-5us" secondAttribute="leftMargin" id="2VC-Zr-V8p"/>
                                                 <constraint firstItem="xf6-yn-re8" firstAttribute="top" secondItem="Eta-oN-5us" secondAttribute="topMargin" id="3s3-Mf-YLE"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="xf6-yn-re8" secondAttribute="bottom" constant="0.67000000000000004" id="ykK-8b-KKJ"/>
@@ -425,7 +423,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxy-Yf-SlO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2502" y="1253"/>
+            <point key="canvasLocation" x="2501.5384615384614" y="1252.6066350710901"/>
         </scene>
         <!--Item-->
         <scene sceneID="q53-PR-4NO">

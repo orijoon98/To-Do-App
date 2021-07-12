@@ -11,12 +11,14 @@ class notiDetailViewController: UIViewController {
         let f = DateFormatter()
         f.dateStyle = .long
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         return f
     }()
     
     let timeFormatter: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "Ko_kr")
+        f.timeZone = TimeZone(abbreviation: "KST")
         f.dateFormat = "a h:mm"
         return f
     }()
