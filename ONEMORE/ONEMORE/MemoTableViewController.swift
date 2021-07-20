@@ -16,7 +16,6 @@ class MemoTableViewController: UITableViewController {
         
         DataManager.shared.fetchMemo()
         tableView.reloadData()
-        
     }
     
     var token: NSObjectProtocol?
