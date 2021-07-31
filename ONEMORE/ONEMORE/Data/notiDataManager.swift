@@ -18,8 +18,9 @@ class notiDataManager {
     func fetchMemo() {
         let request: NSFetchRequest<Noti> = Noti.fetchRequest()
         
-        let sortByDateDesc = NSSortDescriptor(key: "insertDate", ascending: false)
-        request.sortDescriptors = [sortByDateDesc]
+        let sortByDateDesc = NSSortDescriptor(key: "insertDate", ascending: true)
+        let sortByTime = NSSortDescriptor(key: "insertTime", ascending: true)
+        request.sortDescriptors = [sortByDateDesc, sortByTime]
         
         do {
             memoList = try mainContext.fetch(request)

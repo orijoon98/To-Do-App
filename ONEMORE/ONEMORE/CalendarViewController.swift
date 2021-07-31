@@ -140,4 +140,39 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, FS
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // 오른쪽에 만들기
+        let complete = UIContextualAction(style: .normal, title: "완료") { [self] (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            let target = memoByDate[indexPath.row]
+            target.completed = true
+            selectedDate = formatter.date(from: formatter.string(from: selectedDate!))
+            memoByDate.removeAll()
+            events.removeAll()
+            MemoTableViewController.comMemo.removeAll()
+            MemoTableViewController.incomMemo.removeAll()
+            for memo in DataManager.shared.memoList {
+                if memo.completed == false {
+                    MemoTableViewController.incomMemo.append(memo)
+                }
+                else {
+                    MemoTableViewController.comMemo.append(memo)
+                }
+            }
+            if !MemoTableViewController.incomMemo.isEmpty {
+                for memo in MemoTableViewController.incomMemo {
+                    if ableDate(memo.startDate!, selectedDate!, memo.finishDate!) {
+                        memoByDate.append(memo)
+                    }
+                }
+            }
+            tableView.reloadData()
+            setUpEvents()
+            calendar.reloadData()
+            success(true)
+        }
+        complete.backgroundColor = .systemBlue
+        complete.image = UIImage(systemName: "checkmark")
+        
+        return UISwipeActionsConfiguration(actions:[complete])
+    }
 }

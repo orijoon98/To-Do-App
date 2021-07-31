@@ -71,31 +71,19 @@ class NotificationTableViewController: UITableViewController {
     
         return cell
     }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            // 오른쪽에 만들기
+        let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             let target = notiDataManager.shared.memoList[indexPath.row]
             notiDataManager.shared.deleteMemo(target)
             notiDataManager.shared.memoList.remove(at: indexPath.row)
-            
-            
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            
+            success(true)
         }
+        delete.backgroundColor = .systemRed
+        delete.image = UIImage(systemName: "trash")
+        
+        return UISwipeActionsConfiguration(actions:[delete])
     }
-    
-    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "삭제"
-    }
-    
 }

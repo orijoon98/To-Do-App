@@ -131,7 +131,7 @@ class MemoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             // 오른쪽에 만들기
         
-        if(indexPath.section == 0) {
+        if(indexPath.section == 0) { // 할 일
             
             let complete = UIContextualAction(style: .normal, title: "완료") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
                 let target = MemoTableViewController.incomMemo[indexPath.row]
@@ -140,6 +140,19 @@ class MemoTableViewController: UITableViewController {
                 success(true)
             }
             complete.backgroundColor = .systemBlue
+            complete.image = UIImage(systemName: "checkmark")
+            
+            let share = UIContextualAction(style: .normal, title: "완료") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+                let target = MemoTableViewController.incomMemo[indexPath.row]
+                let textShare = target.content
+                let shareArray : [Any] = [textShare!]
+                let activityViewController = UIActivityViewController(activityItems: shareArray, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                self.present(activityViewController, animated: true, completion: nil)
+                success(true)
+            }
+            share.backgroundColor = .systemPurple
+            share.image = UIImage(systemName: "square.and.arrow.up")
                 
                 
             let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
@@ -152,13 +165,13 @@ class MemoTableViewController: UITableViewController {
                 success(true)
             }
             delete.backgroundColor = .systemRed
+            delete.image = UIImage(systemName: "trash")
                 
-            
-            return UISwipeActionsConfiguration(actions:[delete, complete])
+            return UISwipeActionsConfiguration(actions:[delete, share, complete])
                 
         }
         
-        else {
+        else { // 완료 목록
             let complete = UIContextualAction(style: .normal, title: "취소") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
                 let target = MemoTableViewController.comMemo[indexPath.row]
                 target.completed = false
@@ -166,7 +179,19 @@ class MemoTableViewController: UITableViewController {
                 success(true)
             }
             complete.backgroundColor = .systemBlue
-                
+            complete.image = UIImage(systemName: "multiply")
+            
+            let share = UIContextualAction(style: .normal, title: "완료") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+                let target = MemoTableViewController.comMemo[indexPath.row]
+                let textShare = target.content
+                let shareArray : [Any] = [textShare!]
+                let activityViewController = UIActivityViewController(activityItems: shareArray, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                self.present(activityViewController, animated: true, completion: nil)
+                success(true)
+            }
+            share.backgroundColor = .systemPurple
+            share.image = UIImage(systemName: "square.and.arrow.up")
                 
             let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
                 let target = MemoTableViewController.comMemo[indexPath.row]
@@ -178,9 +203,9 @@ class MemoTableViewController: UITableViewController {
                 success(true)
             }
             delete.backgroundColor = .systemRed
-                
+            delete.image = UIImage(systemName: "trash")
             
-            return UISwipeActionsConfiguration(actions:[delete, complete])
+            return UISwipeActionsConfiguration(actions:[delete, share, complete])
         }
     }
     

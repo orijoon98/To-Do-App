@@ -18,7 +18,7 @@ class DataManager {
     func fetchMemo() {
         let request: NSFetchRequest<Memo> = Memo.fetchRequest()
         
-        let sortByDateDesc = NSSortDescriptor(key: "startDate", ascending: false)
+        let sortByDateDesc = NSSortDescriptor(key: "finishDate", ascending: true)
         request.sortDescriptors = [sortByDateDesc]
         
         do {
